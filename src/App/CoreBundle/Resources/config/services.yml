@@ -1,0 +1,40 @@
+parameters:
+#    app_core.example.class: App\CoreBundle\Example
+
+services:
+    sonata.admin.siparis:
+        class: App\CoreBundle\Admin\SiparisAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Siparis" }
+        arguments:
+            - ~
+            - App\CoreBundle\Entity\Siparis
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppCoreBundle]]
+    sonata.admin.urunler:
+        class: App\CoreBundle\Admin\UrunlerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Ürünler" }
+        arguments:
+            - ~
+            - App\CoreBundle\Entity\Urunler
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppCoreBundle]]
+    sonata.admin.musteri:
+        class: App\CoreBundle\Admin\MusteriAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Menu", label: "Müşteriler" }
+        arguments:
+            - ~
+            - App\CoreBundle\Entity\Musteri
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppCoreBundle]]
+
+    sonata.block.service.userblock:
+        class: App\CoreBundle\Block\UserBlockService
+        arguments: [ "sonata.block.service.userblock", @templating ]
+        tags:
+            - { name: sonata.block }

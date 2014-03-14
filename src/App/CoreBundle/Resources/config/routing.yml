@@ -1,0 +1,9 @@
+app_core_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AppCoreBundle:Default:index }
+SiparisShow:
+    pattern:  /siparis/show/{id}
+    defaults: { _controller: AppCoreBundle:Siparis:show }
+SiparisGoster:
+    pattern:  /siparis/goster/{id}
+    defaults: { _controller: AppCoreBundle:Siparis:goster }
